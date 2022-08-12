@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 @Slf4j
 @Service
-public record CustomerService() {
+public record CustomerService(CustomerRepository customerRepository) {
     public void registerCustomer(CustomerRegistrationRequest request) {
         Customer customer= Customer.builder()
                 .firstName(request.firstName())
@@ -18,5 +18,6 @@ public record CustomerService() {
 
 //        TODO://check if email is valid and not taken
 //        TODO://Store customer in DB
+        customerRepository.save(customer);
     }
 }
