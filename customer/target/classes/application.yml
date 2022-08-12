@@ -1,5 +1,7 @@
 server:
     port: 8080
+    error:
+        include-message: always
 spring:
     application:
         name: customer
@@ -10,7 +12,13 @@ spring:
     jpa:
         show-sql: true
         hibernate:
-            ddl-auto: update
+            ddl-auto: create-drop
         properties:
            hibernate:
                 format_sql: true
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://localhost:8761/eureka/
+        fetch-registry: true
+        register-with-eureka: true
